@@ -24,9 +24,10 @@ class SampleClass:
 
 obj1 = SampleClass(2)
 # print(obj1.__a)             #  Error 'SampleClass' object has no attribute '__a' since private attribute cannot be accesed directly
+print("Hello", obj1._SampleClass__a)   # We can access the private attribute by this naming convention
 print(obj1.get_a())       #  accessing private attributes outside the class
 obj1.set_a(45)             # setting the value of private attributes outside the class
-print(obj1.get_a())       
+print(obj1.get_a())    
 
 
 class PrivateAttributeClass:
@@ -41,11 +42,22 @@ class PrivateAttributeClass:
     def p_method(self, p):
         self.__p = p
 
-protected_obj = PrivateAttributeClass(30)
-print(protected_obj.p_method)            #  accessing private attributes outside the class
-protected_obj.__p=31                    # setting the value of private attributes outside the class
-print(protected_obj.__p)
+private_obj = PrivateAttributeClass(30)
+print(private_obj.p_method)            #  accessing private attributes outside the class
+private_obj.__p=31                    # setting the value of private attributes outside the class
+print(private_obj.__p)
     
+
+class ProtectedAttributeClass:
+    def __init__(self, c):
+        self._c = c
+
+
+protected_obj = ProtectedAttributeClass(20)
+print(protected_obj._c)
+protected_obj._c = 56
+print(protected_obj._c)
+
 
 
 
